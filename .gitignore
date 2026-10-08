@@ -28,6 +28,7 @@ _rescue/
 .env.*
 !.env.example
 .streamlit/secrets.toml
+.claude/
 
 # --- Python ----------------------------------------------------------------------
 .venv/
