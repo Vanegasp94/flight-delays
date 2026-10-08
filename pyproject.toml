@@ -15,6 +15,12 @@ dev = [
     "pytest>=8",
     "ruff>=0.8",
 ]
+# Needed to run and re-execute the notebooks under notebooks/ (they also use pandas).
+notebooks = [
+    "ipykernel>=7.4.0",
+    "nbconvert>=7.17.1",
+    "nbformat>=5.11.1",
+]
 # Only needed to re-run the scripts under research/.
 research = [
     "numpy>=2",
@@ -23,7 +29,7 @@ research = [
 ]
 
 [tool.uv]
-default-groups = ["dev", "research"]
+default-groups = ["dev", "notebooks", "research"]
 
 [build-system]
 requires = ["hatchling"]

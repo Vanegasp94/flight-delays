@@ -6,10 +6,14 @@ scope is US flights, using BTS On-Time Performance data and aviation weather
 
 ## Status
 
-This repository is a skeleton. There is no US ingestion, modelling, prediction
-or app code yet. What exists today:
+This repository is at the exploration stage. There is no modelling, prediction,
+dbt model or app code yet. What exists today:
 
 - project tooling and folder structure;
+- an ingestion script for BTS On-Time Performance monthly files
+  (`ingestion/bts_otp.py`), loading raw rows into the local DuckDB database;
+- one exploration notebook profiling the busiest domestic airport pairs
+  (`notebooks/01_bts_otp_route_profile.ipynb`);
 - an empty dbt project (no models);
 - research notes and scripts from a data-availability check of Latin American
   on-time performance sources, mainly Brazil's ANAC VRA
@@ -20,9 +24,9 @@ or app code yet. What exists today:
 | Path | Purpose |
 |---|---|
 | `src/flight_delays/` | Python package (currently only configuration) |
-| `ingestion/` | Ingestion scripts (empty) |
+| `ingestion/` | Ingestion scripts (`bts_otp.py`) |
 | `dbt/` | dbt project on DuckDB: `models/staging`, `models/intermediate`, `models/marts` (empty) |
-| `notebooks/` | Exploration notebooks (empty) |
+| `notebooks/` | Exploration notebooks |
 | `app/` | Streamlit app (empty) |
 | `tests/` | pytest tests |
 | `research/` | Research scripts; `research/brazil_vra/` holds the VRA evaluation |
@@ -68,6 +72,19 @@ Check the dbt connection (run from the repository root; creates
 
 ```bash
 uv run dbt debug --project-dir dbt --profiles-dir dbt
+```
+
+Download BTS On-Time Performance data (January 2023 to the latest published
+month, about 1.5 GB of zip files) and load it into DuckDB:
+
+```bash
+uv run python ingestion/bts_otp.py
+```
+
+Re-run the exploration notebook against the local database:
+
+```bash
+uv run jupyter nbconvert --to notebook --execute --inplace notebooks/01_bts_otp_route_profile.ipynb
 ```
 
 ## Data policy
