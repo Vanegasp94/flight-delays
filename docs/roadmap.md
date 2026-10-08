@@ -7,7 +7,7 @@ is a working end-to-end tool. See
 
 | Phase | Summary | Status |
 |---|---|---|
-| Phase 0 | Repo setup, route profiling, route selection | In progress |
+| Phase 0 | Repo setup, route profiling, route selection | Done |
 | v0 | End-to-end tool on historical rates for the selected route (baseline) | Not started |
 | v1 | Historical METAR and live TAF, with operational explanations | Not started |
 | v2 | Predictive model, adopted only if it beats the baseline | Not started |
@@ -15,16 +15,20 @@ is a working end-to-end tool. See
 
 ## Phase 0: setup and route selection
 
-**Status:** In progress
+**Status:** Done
 
 **Goal.** Have a working repository and enough knowledge of the data to choose
 one route to start with.
 
 **Done when:**
 
-- The repository, tooling and conventions are in place.
-- US domestic routes have been profiled from BTS On-Time Performance data.
-- One route has been selected, and the selection is recorded.
+- [x] The repository, tooling and conventions are in place
+  (`CLAUDE.md`, [decision 0001](decisions/0001-layered-architecture-app-display-only.md)).
+- [x] US domestic routes have been profiled from BTS On-Time Performance data
+  (`notebooks/01_bts_otp_route_profile.ipynb`).
+- [x] One route has been selected, and the selection is recorded:
+  SFO-LAX in both directions, with LGA-ORD as the candidate second route
+  ([decision 0003](decisions/0003-route-selection.md)).
 
 ## v0: historical baseline
 
