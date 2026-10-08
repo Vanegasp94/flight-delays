@@ -1,0 +1,9 @@
+# Local DuckDB profile. Contains no secrets, so it is committed.
+# The path is relative to the directory dbt is run from (the repository root).
+flight_delays:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('FLIGHT_DELAYS_DUCKDB_PATH', 'data/flight_delays.duckdb') }}"
+      threads: 4

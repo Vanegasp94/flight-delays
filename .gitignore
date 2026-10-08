@@ -1,0 +1,54 @@
+# --- Data: never committed ----------------------------------------------------
+# Raw and intermediate data live under data/ and are re-downloaded, not stored.
+data/*
+!data/.gitkeep
+
+# Temporary safety copy of the Brazil VRA research session (scripts + downloads).
+_rescue/
+
+# Data file types are ignored everywhere, not only under data/.
+# (A dbt seed would need an explicit "!" exception added here.)
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.pkl
+*.xlsx
+*.xls
+*.zip
+*.gz
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp/
+*.db
+*.sqlite
+
+# --- Secrets / local configuration ---------------------------------------------
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# --- Python ----------------------------------------------------------------------
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# --- dbt -------------------------------------------------------------------------
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/.user.yml
+logs/
+
+# --- Notebooks / editors / OS ------------------------------------------------------
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,26 @@
+name: 'flight_delays'
+version: '1.0.0'
+
+# Profile defined in profiles.yml in this folder (run dbt with --profiles-dir dbt).
+profile: 'flight_delays'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# No models exist yet. These defaults apply once files are added to each folder.
+models:
+  flight_delays:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
